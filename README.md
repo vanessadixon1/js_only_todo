@@ -1,3 +1,3 @@
 # js_only_todo
-[![JS - Todo List]](https://vimeo.com/863725396/144562f3a3 "JS Todo List - Click to Watch!")
+[![Little red riding hood](https://i.stack.imgur.com/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
 
