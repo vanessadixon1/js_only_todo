@@ -1,29 +1,112 @@
+body {
+    font-size: 16px;
+    width: 62%;
+}
 h1 {
     font-family: 'Caveat', cursive;
     color: #FE7773;
+    font-size: 2.5rem;
 }
-
-/* ul button:nth-child(2) {
-   
-} */
 
 .complete {
     text-decoration: line-through;
     text-decoration-color: red;
 }
 
-/* body {
-    background-color: #1d1d1f;
-    color: #2997ff ;
-} */
+ul>li {
+    list-style:decimal;
+}
+
+ul button {
+    position: relative;
+    bottom: 19px;
+    left: 10%;
+    margin-left: 1%;
+    width: 14%;
+    border-radius: 5px;
+}
+
+.completeButton {
+    background-color: #2997ff;
+    font-size: 1rem;
+    padding: 5px 40px;
+    position: relative;
+    border: solid 2px transparent;
+    gap: 6px;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #1d2b64, #03a9f4) border-box;
+    border-radius: 8px;
+}
+
+.completeButton:hover {
+    background: linear-gradient(90deg, #1d2b64 0%, #03a9f4 100%);
+    cursor: pointer;
+}
+
+.deleteButton {
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    padding: 5px 2px;
+    border-radius: 10px;
+    gap: 6px;
+    background: #E81E25;
+    color:aliceblue;
+    border: 2px solid transparent;
+}
+
+.deleteButton:hover {
+    font-family: 'Crimson Text', serif;
+    position: relative;
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, #1d2b64, #03a9f4) border-box;
+    color: #0E0301;
+    cursor: pointer;
+}
 
 form {
     position: relative;
     left: 700px;
 }
 
+form input {
+    padding: .8rem;
+    font-size: 1em;
+    width: 15rem;
+    height: 20px;
+    border: 2px solid #111;
+    border-radius: 2rem;
+    color: #000;
+    transition: border-color 0.3s ease-in-out;
+}
+
+form input:focus {
+    outline: none;
+    box-shadow: 0 2px 4px lightblue;
+    border: 2px solid lightblue;
+}
+
 form button {
     margin-left: 10px;
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+form button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
 }
 
 .display {
@@ -33,5 +116,52 @@ form button {
 .wrapper {
     position:absolute;
     top: 30px;
-    left: 90%;
+    left: 86%;
+}
+
+.createTodoButton, .existingTodoButton {
+    font-family: 'Crimson Text', serif;
+    margin: 8px;
+    font-size: 1rem;
+    padding: 5px 2px;
+    border-radius: 10px;
+    gap: 6px;
+    background: #ECE4E2;
+    color:#FE7773;
+    border: 2px solid transparent;
+}
+
+label {
+	width: 63px;
+	background: #202430;
+	border-radius: 50px;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.3s;
+	display: flex;
+	align-items: center;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+#btn:checked ~ label {
+	background: whitesmoke;
+	box-shadow: 0 0 0 1200px #202430;
+}
+
+label:before {
+	content: "";
+	margin: 0 10px;
+	height: 25px;
+	width: 25px;
+	background: whitesmoke;
+	border-radius: 80px;
+	transition: 0.5s;
+}
+
+#btn:checked ~ label:before {
+	transform: translateX(112%);
+	background: #202430;
 }
