@@ -3,11 +3,9 @@ document.addEventListener("DOMContentLoaded", function() {
  
     let body = document.querySelector("body");
     let form = createNewElement("form", "class", "form")
-    let label = createNewElement("label", "for", "todo");
-    let input = createNewElement("input", "id", "todo");
+    let input = createNewElement("input", "placeholder", "add a todo...");
     let formButton = createNewElement("button");
     let ul = createNewElement("ul");
-    let darkModeButton = createNewElement("input", "type", "button"); 
     let newTodoListButton = createNewElement("button", "class", "createTodoButton"); 
     let existingTodoListButton = createNewElement("button", "class", "existingTodoButton"); 
     let div = createNewElement("div","class", "wrapper");
@@ -15,28 +13,27 @@ document.addEventListener("DOMContentLoaded", function() {
     let todoList = [];
     let listName;
 
-    label.innerText = "Add a Todo: ";
-
     formButton.innerText = "Submit";
     
-    darkModeButton.innerText = "Dark Mode"
 
     newTodoListButton.innerText = "Create List";
 
     existingTodoListButton.innerText = "Existing List";
 
-    form.append(label,input,formButton);
+    form.append(input,formButton);
     div.append(newTodoListButton, existingTodoListButton);
 
-    body.append(darkModeButton, form, ul, div);
+    body.append(form, ul, div);
 
-    form.classList.add("display")
+    form.classList.add("display");
    
     div.addEventListener("click", function(e) {
         listName = prompt("Enter a list name");
         switch(e.target.innerText) {
             case "Create List":
-                if(!localStorage.getItem(listName)) {
+                if(!listName) {
+                    alert(`List can't be empty`);
+                }else if(!localStorage.getItem(listName)) {
                     localStorage.setItem(listName, JSON.stringify(todoList));
                     form.classList.remove("display");
                 }else {
@@ -62,10 +59,13 @@ document.addEventListener("DOMContentLoaded", function() {
         evt.preventDefault();
 
         if(todoList.includes(input.value)) {
-            alert("no duplicates allowed");
+            alert("No Duplicates Allowed");
         }else if(!input.value) {
             alert("NO TODO ENTERED!");
-        }else {
+        }else if(input.value.length > 25) {
+            alert("Todo Must Be 25 Characters or Less ")
+        }
+        else {
             let li = createLiWithButtons(input.value);
             ul.append(li);
             todoList.push(input.value);
@@ -76,13 +76,13 @@ document.addEventListener("DOMContentLoaded", function() {
     
     ul.addEventListener('click', function(e) {
         if(e.target.tagName === 'BUTTON' && e.target.innerText === 'Completed') {
-           e.target.parentElement.classList.toggle('complete')
+           e.target.parentElement.parentElement.classList.toggle('complete')
         }else if(e.target.tagName === 'BUTTON' && e.target.innerText === 'Delete') {
-            let txt = e.target.parentElement.innerText;
-            let todoText = txt.split("Completed")[0];
+            let txt = e.target.parentElement.parentElement.innerText;
+            let todoText = txt.split("\n")[0];
             let index = todoList.indexOf(todoText);
             todoList.splice(index,1);
-            e.target.parentElement.remove();
+            e.target.parentElement.parentElement.remove();
         }
         localStorage.setItem(listName, JSON.stringify(todoList));
     });
@@ -104,14 +104,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function createLiWithButtons(input) {
         let li = createNewElement("li");
-        let completeButton = createNewElement("button");
-        let removeButton = createNewElement("button"); 
+        let completeButton = createNewElement("button", "class", "completeButton");
+        let removeButton = createNewElement("button", "class", "deleteButton"); 
+        let div = createNewElement("div", "class", "sp");
     
         completeButton.innerText = "Completed";
         removeButton.innerText = "Delete";
         
         li.innerText = input;
-        li.append(completeButton,removeButton);
+
+        div.append(completeButton, removeButton)
+        li.append(div);
 
         return li;
     }
