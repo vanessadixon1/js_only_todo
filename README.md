@@ -1,5 +1,5 @@
 # js_only_todo
-![Model](/assets/todo_vid.png)
+![Model](/assets/todo_vid.gif)
 
 
 
