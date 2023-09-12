@@ -1,3 +1,4 @@
 # js_only_todo
-[![IMAGE ALT TEXT HERE](https://vimeo.com/863725396/144562f3a3)
+[![Little red riding hood](https://i.stack.imgur.com/XCRlR.png)](https://vimeo.com/3514904 "Little red riding hood - Click to Watch!")
+
 
