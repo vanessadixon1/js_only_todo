@@ -1,0 +1,37 @@
+h1 {
+    font-family: 'Caveat', cursive;
+    color: #FE7773;
+}
+
+/* ul button:nth-child(2) {
+   
+} */
+
+.complete {
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+/* body {
+    background-color: #1d1d1f;
+    color: #2997ff ;
+} */
+
+form {
+    position: relative;
+    left: 700px;
+}
+
+form button {
+    margin-left: 10px;
+}
+
+.display {
+    display: none;
+}
+
+.wrapper {
+    position:absolute;
+    top: 30px;
+    left: 90%;
+}
