@@ -35,14 +35,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(!listName) {
                     alert(`List can't be empty`);
                 }else if(!localStorage.getItem(listName)) {
-                    todoList = [];
-                    localStorage.setItem(listName, JSON.stringify(todoList));
-                    
-                    if(form.classList.contains("display")|| ul.children) {
-                        form.classList.remove("display");
-                        for(let i of ul.children) {
+                    if(todoList || ul.children) {
+                        todoList = [];
+                        localStorage.setItem(listName, JSON.stringify(todoList));
+
+                        let lis = document.querySelectorAll("li")
+                        for(let i of lis) {
                             i.remove();
-                        }
+                        } 
+                    }
+
+    
+                    
+                    if(form.classList.contains("display")) {
+                        form.classList.remove("display");
+                        
                     }
                 }else {
                     alert(`A list with the name ${listName} already exist`)
@@ -145,8 +152,3 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     
 });
-
-
-
-
-
