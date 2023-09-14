@@ -43,13 +43,10 @@ document.addEventListener("DOMContentLoaded", function() {
                         for(let i of lis) {
                             i.remove();
                         } 
-                    }
-
-    
-                    
+                    } 
                     if(form.classList.contains("display")) {
-                        form.classList.remove("display");
-                        
+                            form.classList.remove("display");
+                            
                     }
                 }else {
                     alert(`A list with the name ${listName} already exist`)
