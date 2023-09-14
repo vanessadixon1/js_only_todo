@@ -16,9 +16,6 @@ ToDo list is a simple web application to save Your daily tasks in order not to m
 * JavaScript
 * localStorage
   
-### App demo
-
-![Model](/assets/noDarkMode.png)
 
 
 
