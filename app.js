@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
- 
     let body = document.querySelector("body");
+    let darkModeButton = document.getElementById("btn");
     let form = createNewElement("form", "class", "form")
     let input = createNewElement("input", "placeholder", "add a todo...");
     let formButton = createNewElement("button");
@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let listName;
 
     formButton.innerText = "Submit";
-    
 
     newTodoListButton.innerText = "Create List";
 
@@ -26,7 +25,9 @@ document.addEventListener("DOMContentLoaded", function() {
     body.append(form, ul, div);
 
     form.classList.add("display");
-   
+
+    darkModeToggle();
+
     div.addEventListener("click", function(e) {
         listName = prompt("Enter a list name");
         switch(e.target.innerText) {
@@ -34,8 +35,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(!listName) {
                     alert(`List can't be empty`);
                 }else if(!localStorage.getItem(listName)) {
+                    todoList = [];
                     localStorage.setItem(listName, JSON.stringify(todoList));
-                    form.classList.remove("display");
+                    
+                    if(form.classList.contains("display")|| ul.children) {
+                        form.classList.remove("display");
+                        for(let i of ul.children) {
+                            i.remove();
+                        }
+                    }
                 }else {
                     alert(`A list with the name ${listName} already exist`)
                 }
@@ -87,6 +95,16 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem(listName, JSON.stringify(todoList));
     });
 
+    darkModeButton.addEventListener("click", function(e) {
+        const {checked} = darkModeButton;
+        if(checked) {
+            localStorage.setItem("darkMode", checked);
+        } else {
+            localStorage.removeItem("darkMode");
+        }
+        body.className = checked ? "darkMode" : "";
+    });
+
     function removeItemsFromUi(node) {
         form.classList.remove("display");
         for(let i of node) {
@@ -118,6 +136,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
         return li;
     }
+
+    function darkModeToggle() {
+        if(localStorage.getItem("darkMode")) {
+            body.className = "darkMode";
+            darkModeButton.checked = true;
+        }
+    }
+    
 });
 
 
